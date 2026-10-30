@@ -2,6 +2,14 @@
 
 Turn a photo of your university timetable into an editable class list, catch clashes, and export it to your Google calendar so users get notifications.
 
+ Many universities in Uganda still manage timetables manually using spreadsheets and paperwork.
+This leads to:
+•Lecturer conflicts
+•Room allocation clashes
+•Time-consuming timetable generation
+•Frequent timetable changes
+•Student confusion"
+
 **Live demo:** https://saidn-dev.github.io/campus-pilot/ (sample data stands in for the AI; run it locally for real Gemma 4 results)
 
 Gemma 4 reads the image and writes study tips. Plain rules in the browser handle conflict detection, so those results are exact.
