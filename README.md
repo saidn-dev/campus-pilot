@@ -1,6 +1,6 @@
 # Timetable Assistant
 
-Turn a photo of your university timetable into an editable class list, catch clashes, and export it to your calendar.
+Turn a photo of your university timetable into an editable class list, catch clashes, and export it to your Google calendar so users get notifications.
 
 **Live demo:** https://saidn-dev.github.io/campus-pilot/ (sample data stands in for the AI; run it locally for real Gemma 4 results)
 
