@@ -16,6 +16,8 @@
     <p>Snap your uni timetable. Gemma 4 reads it, finds clashes and gives you study tips.</p>
   </header>
 
+  <p class="demo-banner" id="demo-banner" hidden>Live demo: there's no server here, so "Read timetable" and the tips use sample data. Conflict checks, the weekly grid, editing and the calendar export all run for real. To get real Gemma 4 results, run it locally (see the README).</p>
+
   <main>
     <section class="panel" id="upload-panel">
       <h2>1. Add your timetable</h2>
@@ -26,6 +28,7 @@
       </label>
       <div class="row">
         <button id="read-btn" disabled>Read timetable</button>
+        <button id="sample-btn" hidden>Try a sample timetable</button>
         <button id="add-btn" class="ghost">Add a class by hand</button>
         <button id="clear-btn" class="ghost">Clear all</button>
       </div>
@@ -73,6 +76,7 @@
 
   <footer>Built with Gemma 4 (gemma-4-31b-it) through the Gemini API</footer>
 
+  <script src="demo.js"></script>
   <script src="analysis.js"></script>
   <script src="app.js"></script>
 </body>

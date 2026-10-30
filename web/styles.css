@@ -136,3 +136,6 @@ header h1 { background: var(--gemma); -webkit-background-clip: text; background-
 .badge { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #5a5fd8; color: #c9cdff; background: rgba(106, 141, 255, 0.1); }
 .drop.over, .drop:hover { border-color: #8f7bff; }
 footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 20px 28px; }
+
+.demo-banner { box-sizing: border-box; width: calc(100% - 40px); max-width: 1160px; margin: 12px auto 0; padding: 10px 14px; border: 1px solid var(--warn); border-radius: 10px; color: var(--warn); font-size: 14px; }
+.demo-banner[hidden] { display: none; }

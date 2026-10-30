@@ -61,11 +61,16 @@ async function readTimetable() {
   $("read-btn").disabled = true;
   setStatus($("read-status"), "Gemma 4 is reading your timetable. This can take 20-60 seconds...");
   try {
-    const form = new FormData();
-    form.append("image", await shrinkImage(imageFile), "timetable.jpg");
-    const res = await fetch("/api/extract", { method: "POST", body: form });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || "Reading failed.");
+    let data;
+    if (DEMO) {
+      data = { classes: await demoExtract() };
+    } else {
+      const form = new FormData();
+      form.append("image", await shrinkImage(imageFile), "timetable.jpg");
+      const res = await fetch("/api/extract", { method: "POST", body: form });
+      data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Reading failed.");
+    }
     if (!data.classes.length) throw new Error("Gemma could not find any classes in that image. Try a clearer photo.");
     classes = data.classes.map(c => ({ ...c, id: newId() }));
     save();
@@ -233,13 +238,18 @@ async function getTips() {
     free_gaps_of_1h_or_more_between_08_and_18: freeGaps(classes),
   };
   try {
-    const res = await fetch("/api/tips", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ analysis }),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || "Could not get tips.");
+    let data;
+    if (DEMO) {
+      data = { tips: await demoTips() };
+    } else {
+      const res = await fetch("/api/tips", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ analysis }),
+      });
+      data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Could not get tips.");
+    }
     $("tips").innerHTML = data.tips.map(t => `<li><b>${esc(t.title)}</b>${esc(t.detail)}</li>`).join("");
     setStatus($("tips-status"), "");
   } catch (err) {
@@ -291,5 +301,19 @@ $("rows").addEventListener("click", e => {
   save();
   render();
 });
+
+if (DEMO) {
+  $("demo-banner").hidden = false;
+  $("sample-btn").hidden = false;
+  $("sample-btn").addEventListener("click", async () => {
+    $("sample-btn").disabled = true;
+    setStatus($("read-status"), "Loading the sample timetable...");
+    classes = (await demoExtract()).map(c => ({ ...c, id: newId() }));
+    save();
+    render();
+    setStatus($("read-status"), `Loaded ${classes.length} sample classes. Edit them to see the checks update.`);
+    $("sample-btn").disabled = false;
+  });
+}
 
 render();
