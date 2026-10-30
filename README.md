@@ -93,5 +93,6 @@ The server also serves `web/` at `/`.
 | `POST /api/tips` | `{"analysis": {...}}` | `{"tips": [{"title", "detail"}]}` |
 
 Gemma errors return HTTP 502 with a readable message, such as a missing API key or a timeout.
+Thanks
 
 <!-- TODO: add a License section once a LICENSE file is chosen -->
