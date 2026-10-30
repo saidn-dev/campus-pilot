@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timetable Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8bff"/><stop offset="1" stop-color="#b06bff"/></linearGradient></defs><path fill="url(#g)" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg>
+      <h1>Timetable Assistant</h1>
+      <span class="badge">Powered by Gemma 4</span>
+    </div>
+    <p>Snap your uni timetable. Gemma 4 reads it, finds clashes and gives you study tips.</p>
+  </header>
+
+  <main>
+    <section class="panel" id="upload-panel">
+      <h2>1. Add your timetable</h2>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept="image/*" capture="environment" hidden>
+        <img id="preview" alt="" hidden>
+        <span id="drop-text">Drop a photo or screenshot here, or tap to choose one</span>
+      </label>
+      <div class="row">
+        <button id="read-btn" disabled>Read timetable</button>
+        <button id="add-btn" class="ghost">Add a class by hand</button>
+        <button id="clear-btn" class="ghost">Clear all</button>
+      </div>
+      <p class="status" id="read-status"></p>
+    </section>
+
+    <section class="panel" id="issues-panel">
+      <h2>2. Conflicts</h2>
+      <ul id="issues"></ul>
+    </section>
+
+    <section class="panel wide">
+      <h2>Your week</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Classes <small>check what Gemma read and fix anything wrong</small></h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Course</th><th>Type</th><th>Day</th><th>Start</th><th>End</th><th>Room</th><th>Lecturer</th><th></th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>3. Add to your calendar</h2>
+      <div class="row">
+        <label>Semester ends <input type="date" id="sem-end"></label>
+        <button id="ics-btn" disabled>Add to calendar</button>
+      </div>
+      <p class="status">Downloads a calendar file. Open it on your phone, or import it in Google Calendar (Settings, Import) or Outlook. Each class repeats every week until the semester ends.</p>
+    </section>
+
+    <section class="panel wide">
+      <h2><svg class="spark small" viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#g)" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg>4. Tips from Gemma 4</h2>
+      <button id="tips-btn" disabled>Get tips for this timetable</button>
+      <p class="status" id="tips-status"></p>
+      <ol id="tips"></ol>
+    </section>
+  </main>
+
+  <footer>Built with Gemma 4 (gemma-4-31b-it) through the Gemini API</footer>
+
+  <script src="analysis.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
