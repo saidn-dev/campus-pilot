@@ -17,3 +17,5 @@ The system checks: ✅ Lecturer availability
 ✅ Room availability
 ✅ Course conflicts
 ✅ Student group conflicts
+
+see this
