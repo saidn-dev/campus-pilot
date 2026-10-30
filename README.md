@@ -2,6 +2,8 @@
 
 Turn a photo of your university timetable into an editable class list, catch clashes, and export it to your calendar.
 
+**Live demo:** https://saidn-dev.github.io/campus-pilot/ (sample data stands in for the AI; run it locally for real Gemma 4 results)
+
 Gemma 4 reads the image and writes study tips. Plain rules in the browser handle conflict detection, so those results are exact.
 
 ```text
